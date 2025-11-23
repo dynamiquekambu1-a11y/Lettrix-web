@@ -1,0 +1,29 @@
+
+Je reste à votre disposition pour toute information complémentaire et un éventuel entretien.
+
+
+Je vous remercie sincèrement de l’attention portée à ma candidature et espère avoir l’opportunité de rejoindre votre équipe.
+
+
+En attendant une réponse favorable, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations distinguées.
+
+
+Je serais ravi(e) de pouvoir vous rencontrer afin d’échanger davantage sur mes motivations.
+
+
+Je vous prie d’agréer, {{destinataire}}, l’assurance de ma considération respectueuse.
+
+
+Je me tiens à votre disposition pour toute rencontre ou information supplémentaire concernant ma candidature.
+
+
+Je vous remercie de votre temps et de votre considération, et espère pouvoir collaborer prochainement avec {{nom_entreprise}}.
+
+
+Je reste disponible pour un entretien afin de vous exposer plus en détail mes motivations et mes compétences.
+
+
+Dans l’attente d’une réponse de votre part, je vous prie d’agréer, {{destinataire}}, mes salutations respectueuses.
+
+
+Je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations les plus distinguées.

@@ -1,0 +1,199 @@
+Dans l’attente de votre réponse, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations distinguées et de ma considération la plus sincère.
+
+Je reste à votre disposition pour un entretien afin de vous présenter plus en détail mes compétences et ma motivation pour ce stage au sein de {{nom_entreprise}}.
+
+Je vous remercie par avance de l’attention portée à ma candidature et espère pouvoir contribuer prochainement aux missions de votre entreprise.
+
+Espérant que ma candidature retiendra votre attention, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations respectueuses et dévouées.
+
+Je suis à votre disposition pour toute information complémentaire et me tiens prêt(e) à vous rencontrer selon vos disponibilités pour échanger sur ma candidature.
+
+Dans l’attente d’un retour favorable de votre part, je vous adresse, {{destinataire}}, mes salutations distinguées ainsi que mon entier dévouement.
+
+Je vous remercie pour l’opportunité que vous pourriez m’offrir et espère vivement pouvoir apporter ma contribution aux projets de {{nom_entreprise}}.
+
+Je reste disponible pour un entretien et pour toute précision concernant mon profil, mes compétences et ma motivation à rejoindre votre équipe.
+
+Convaincu(e) que ce stage sera bénéfique pour ma formation et mon développement professionnel, je vous adresse mes salutations les plus respectueuses.
+
+En espérant que ma candidature retiendra toute votre attention, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et ma considération sincère.
+
+Je me tiens à votre disposition pour un entretien qui me permettrait de vous exposer plus en détail mes motivations et mon projet professionnel.
+
+Je vous remercie vivement de l’intérêt que vous porterez à ma candidature et espère avoir l’opportunité de contribuer aux projets de {{nom_entreprise}}.
+
+Dans l’attente de votre réponse, je vous prie d’agréer, {{destinataire}}, mes salutations respectueuses et l’expression de ma motivation la plus sincère.
+
+Je reste à votre entière disposition pour tout échange ou rencontre qui vous permettrait d’évaluer ma candidature plus en détail.
+
+Convaincu(e) que mon profil correspond aux besoins de votre entreprise, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et respectueuses.
+
+En espérant pouvoir collaborer prochainement avec vos équipes, je vous adresse mes salutations les plus cordiales et distinguées.
+
+Je vous remercie par avance pour le temps que vous consacrerez à l’étude de ma candidature et reste disponible pour tout entretien.
+
+Dans l’attente d’une réponse de votre part, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations respectueuses et de ma considération sincère.
+
+Je me tiens prêt(e) à vous rencontrer afin de détailler mes compétences et ma motivation pour ce stage au sein de {{nom_entreprise}}.
+
+Espérant que ma candidature retiendra votre attention, je vous prie de recevoir, {{destinataire}}, mes salutations respectueuses et ma gratitude pour le temps accordé.
+
+Je reste à votre disposition pour toute information complémentaire et serais honoré(e) de pouvoir échanger avec vous sur ma candidature.
+
+Je vous remercie de l’attention portée à ma demande et espère avoir l’opportunité de participer aux missions de {{nom_entreprise}}.
+
+Dans l’attente de votre retour, je vous prie d’agréer, {{destinataire}}, mes salutations respectueuses et ma reconnaissance pour votre considération.
+
+Je reste disponible pour un entretien et pour toute précision sur mes compétences et mon parcours académique.
+
+Convaincu(e) que ce stage sera une expérience formatrice et enrichissante, je vous adresse mes salutations distinguées et respectueuses.
+
+En espérant une réponse favorable, je vous prie de recevoir, {{destinataire}}, mes salutations les plus cordiales et sincères.
+
+Je me tiens à votre disposition pour tout entretien ou complément d’information que vous jugerez nécessaire.
+
+Je vous remercie pour l’attention portée à ma candidature et espère pouvoir contribuer activement aux projets de {{nom_entreprise}}.
+
+Dans l’attente de votre retour, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations distinguées et de ma considération la plus sincère.
+
+Je reste à votre disposition pour un entretien afin de vous présenter plus en détail mes motivations, mon parcours et mes compétences.
+
+Je vous remercie par avance pour le temps que vous consacrerez à examiner ma candidature et reste disponible pour un échange complémentaire.
+
+Convaincu(e) que mon profil pourra répondre à vos attentes, je vous prie de recevoir, {{destinataire}}, mes salutations respectueuses et ma considération.
+
+Espérant que ma candidature retiendra toute votre attention, je me tiens à votre disposition pour un entretien selon vos disponibilités.
+
+Je reste disponible pour toute rencontre afin de vous exposer de manière détaillée mes motivations et mon projet professionnel.
+
+Dans l’attente de votre réponse, je vous adresse, {{destinataire}}, mes salutations distinguées et l’expression de mon intérêt sincère pour ce stage.
+
+Je vous remercie de l’intérêt porté à ma candidature et espère vivement pouvoir collaborer avec les équipes de {{nom_entreprise}}.
+
+Je reste à votre disposition pour tout échange ou entretien qui vous permettrait d’apprécier mon profil et ma motivation.
+
+Dans l’espoir d’une réponse favorable, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et ma considération sincère.
+
+Convaincu(e) que ce stage constituera une étape enrichissante de mon parcours, je reste disponible pour toute information complémentaire.
+
+Je vous remercie pour le temps et l’attention que vous consacrerez à l’étude de ma candidature et espère pouvoir contribuer aux projets de {{nom_entreprise}}.
+
+Je me tiens à votre disposition pour toute rencontre ou entretien permettant de mieux évaluer mon profil et mes motivations.
+
+Dans l’attente de votre retour, je vous prie d’agréer, {{destinataire}}, mes salutations respectueuses et l’expression de mon engagement.
+
+Je reste disponible pour un entretien afin de vous exposer plus en détail mes compétences et mon intérêt pour ce stage.
+
+En espérant que ma candidature retiendra votre attention, je vous adresse, {{destinataire}}, mes salutations distinguées et ma reconnaissance.
+
+Convaincu(e) que mon profil pourra apporter une valeur ajoutée à {{nom_entreprise}}, je vous prie de recevoir mes salutations respectueuses.
+
+Je vous remercie pour le temps accordé à l’étude de ma candidature et me tiens prêt(e) à vous rencontrer pour tout complément d’information.
+
+Dans l’attente d’une réponse favorable, je vous adresse, {{destinataire}}, mes salutations distinguées et l’expression de ma considération.
+
+Je reste disponible pour un entretien selon vos disponibilités afin de détailler mes compétences et motivations.
+
+Je vous remercie par avance pour l’attention portée à ma candidature et espère pouvoir contribuer prochainement aux projets de {{nom_entreprise}}.
+
+Espérant que ma candidature retiendra votre attention, je vous prie d’agréer, {{destinataire}}, l’expression de mes salutations distinguées et respectueuses.
+
+Je me tiens à votre disposition pour tout échange visant à mieux vous présenter mon parcours et mes motivations.
+
+Dans l’attente de votre retour, je vous adresse mes salutations distinguées et l’assurance de ma considération respectueuse.
+
+Je reste disponible pour un entretien afin de vous exposer de manière complète mon intérêt et mon implication pour ce stage.
+
+Convaincu(e) que ce stage sera bénéfique pour ma formation, je vous adresse mes salutations distinguées et respectueuses.
+
+Je vous remercie pour le temps et l’attention que vous porterez à ma candidature et reste disponible pour un échange complémentaire.
+
+Espérant avoir l’opportunité de collaborer avec vos équipes, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées.
+
+Je reste à votre disposition pour toute information complémentaire concernant mon profil et mes compétences.
+
+Dans l’attente de votre réponse, je vous adresse, {{destinataire}}, mes salutations respectueuses et l’expression de mon engagement.
+
+Je vous remercie de l’attention portée à ma candidature et espère pouvoir intégrer prochainement les équipes de {{nom_entreprise}}.
+
+Je reste disponible pour un entretien afin de détailler mes compétences, mes motivations et mon intérêt pour ce stage.
+
+Convaincu(e) que mon profil correspond aux besoins de votre entreprise, je vous adresse mes salutations distinguées et ma considération sincère.
+
+Je reste à votre disposition pour tout échange ou rencontre permettant de discuter plus en détail de ma candidature.
+
+Espérant que ma candidature retiendra toute votre attention, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et respectueuses.
+
+Je vous remercie par avance pour le temps consacré à l’étude de ma demande et reste disponible pour tout complément d’information.
+
+Dans l’attente de votre retour favorable, je vous adresse mes salutations distinguées et l’expression de mon engagement sincère.
+
+Je reste disponible pour un entretien afin de présenter de manière approfondie mon parcours et mes motivations pour ce stage.
+
+Je vous remercie pour l’attention que vous porterez à ma candidature et espère pouvoir apporter ma contribution aux projets de {{nom_entreprise}}.
+
+Convaincu(e) que cette expérience sera formatrice et enrichissante, je vous prie d’agréer, {{destinataire}}, mes salutations distinguées.
+
+Dans l’attente de votre réponse, je reste à votre disposition pour toute rencontre ou échange complémentaire concernant mon profil.
+
+Je vous remercie pour le temps et l’attention consacrés à l’examen de ma candidature et espère pouvoir rejoindre votre équipe prochainement.
+
+Je reste disponible pour tout entretien afin de présenter mes motivations et discuter de la manière dont je pourrais contribuer à {{nom_entreprise}}.
+
+Espérant que ma candidature retiendra votre attention, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et respectueuses.
+
+Je vous remercie pour le temps accordé à ma candidature et reste à votre disposition pour tout complément d’information.
+
+Convaincu(e) que mon profil pourra apporter une contribution significative à vos projets, je vous adresse mes salutations distinguées.
+
+Je reste à votre disposition pour un entretien selon vos disponibilités afin d’échanger plus en détail sur mon parcours et mes motivations.
+
+Dans l’attente de votre réponse, je vous adresse, {{destinataire}}, mes salutations distinguées et l’expression de mon profond respect.
+
+Je vous remercie de l’attention portée à ma candidature et espère vivement pouvoir participer aux projets de {{nom_entreprise}}.
+
+Je reste disponible pour toute rencontre ou échange afin de détailler mon profil, mes compétences et mes motivations.
+
+Convaincu(e) que ce stage sera une expérience enrichissante, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et respectueuses.
+
+Espérant une réponse favorable, je vous adresse mes salutations distinguées et l’assurance de ma motivation sincère.
+
+Je reste à votre disposition pour un entretien afin de vous exposer plus en détail mon parcours académique et professionnel.
+
+Je vous remercie par avance pour l’attention portée à ma candidature et espère pouvoir intégrer votre équipe prochainement.
+
+Dans l’attente d’une réponse, je vous adresse, {{destinataire}}, mes salutations distinguées et l’expression de mon respect.
+
+Je reste disponible pour toute information complémentaire et serais ravi(e) de vous rencontrer afin de détailler mes compétences et motivations.
+
+Convaincu(e) que ce stage me permettra de progresser et d’acquérir une expérience précieuse, je vous adresse mes salutations respectueuses.
+
+Je vous remercie pour le temps consacré à l’étude de ma candidature et reste à votre disposition pour un entretien.
+
+Espérant pouvoir rejoindre votre équipe, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et ma considération sincère.
+
+Je reste à votre disposition pour toute rencontre permettant de présenter de manière détaillée mon profil et mon intérêt pour ce stage.
+
+Dans l’attente d’un retour favorable, je vous adresse mes salutations distinguées et l’expression de ma motivation sincère.
+
+Je vous remercie pour l’attention portée à ma candidature et espère avoir l’opportunité de contribuer aux projets de {{nom_entreprise}}.
+
+Je reste disponible pour un entretien afin de détailler mon parcours académique, mes compétences et ma motivation pour ce stage.
+
+Espérant que ma candidature retiendra votre attention, je vous prie de recevoir, {{destinataire}}, mes salutations distinguées et ma considération.
+
+Je vous remercie pour le temps consacré à examiner ma candidature et reste à votre disposition pour tout complément d’information.
+
+Convaincu(e) que mon profil pourra répondre aux besoins de votre entreprise, je vous adresse mes salutations distinguées.
+
+Je reste à votre disposition pour un échange ou un entretien permettant de présenter mon parcours et ma motivation.
+
+Dans l’attente de votre réponse favorable, je vous adresse, {{destinataire}}, mes salutations distinguées et ma considération la plus sincère.
+
+Je vous remercie pour l’attention portée à ma candidature et espère pouvoir intégrer prochainement les équipes de {{nom_entreprise}}.
+
+Je reste disponible pour toute rencontre ou entretien afin d’échanger plus en détail sur mes compétences et ma motivation.
+
+Convaincu(e) que ce stage constituera une expérience enrichissante et formatrice, je vous prie d’agréer, {{destinataire}}, mes salutations distinguées.
+
+En espérant une réponse favorable de votre part, je vous adresse mes salutations distinguées et l’assurance de mon engagement et de ma motivation pour ce stage.
