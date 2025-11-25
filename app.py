@@ -83,10 +83,10 @@ def preview():
     return generer_base(page="preview")
 
 
+
 @app.route("/google70150802f6baa8d4.html")
 def google_verification():
-    return send_from_directory("static/verification", "google70150802f6baa8d4.html")
-
+    return send_from_directory("static/", "google70150802f6baa8d4.html")
 
 
 
