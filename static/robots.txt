@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /admin/
+Sitemap: https://lettrix-web.onrender.com/sitemap.xml

@@ -82,12 +82,17 @@ def generer():
 def preview():
     return generer_base(page="preview")
 
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
 
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory("static", "sitemap.xml")
 
 @app.route("/google70150802f6baa8d4.html")
 def google_verification():
-    return send_from_directory("static/", "google70150802f6baa8d4.html")
-
+    return send_from_directory("static/verification", "google70150802f6baa8d4.html")
 
 
 
