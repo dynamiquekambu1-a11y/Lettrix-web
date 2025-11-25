@@ -5,6 +5,7 @@ import tempfile
 import os
 import json
 from datetime import datetime
+from flask import send_from_directory
 
 app = Flask(__name__)
 app.secret_key = "lettrix_secret_key"
@@ -80,6 +81,16 @@ def generer():
 @app.route("/preview", methods=["POST"])
 def preview():
     return generer_base(page="preview")
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
 
 
 def generer_base(page="index"):
