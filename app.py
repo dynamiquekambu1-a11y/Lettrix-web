@@ -90,10 +90,12 @@ def robots():
 def sitemap():
     return send_from_directory("static", "sitemap.xml")
 
+
+
+
 @app.route('/google70150802f6baa8d4.html')
 def google_verify():
-    return "google-site-verification: google70150802f6baa8d4.html"
-
+    return send_from_directory('static', 'google70150802f6baa8d4.html')
 
 def generer_base(page="index"):
     champs = {
