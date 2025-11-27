@@ -82,20 +82,22 @@ def generer():
 def preview():
     return generer_base(page="preview")
 
+
 @app.route("/robots.txt")
 def robots():
     return send_from_directory("static", "robots.txt")
+
 
 @app.route("/sitemap.xml")
 def sitemap():
     return send_from_directory("static", "sitemap.xml")
 
 
-
-
+# 🔐 ROUTE DE VÉRIFICATION GOOGLE (IMPORTANT)
 @app.route('/google70150802f6baa8d4.html')
 def google_verify():
     return send_from_directory('static', 'google70150802f6baa8d4.html')
+
 
 def generer_base(page="index"):
     champs = {
@@ -178,8 +180,6 @@ def export_pdf():
     lettre = dict(request.form)
     fichier = outil_web.generer_pdf_temp(lettre)
     return send_file(fichier, as_attachment=True, download_name="lettre.pdf")
-
-
 
 
 if __name__ == "__main__":
