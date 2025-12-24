@@ -1,186 +1,281 @@
-from flask import Flask, render_template, request, send_file, redirect, url_for
-import generator
-import outil_web
-import tempfile
+from flask import Flask, render_template, redirect, url_for, session, request, flash
+import uuid
+import limits
+import sqlite3
+from datetime import date, datetime
 import os
 import json
-from datetime import datetime
-from flask import send_from_directory
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = "lettrix_secret_key"
+app.secret_key = "LETTRIX_SECRET_KEY"
 
-# ----------------------------
-# 🔒 CONFIG LIMITES EXPORTATION
-# ----------------------------
-LIMIT_FILE = "export_limits.json"
-EXPORT_LIMIT = 2   # 2 exports par jour
+DB_NAME = "database.db"
 
+# ================= DATABASE =================
+def get_db():
+    conn = sqlite3.connect(DB_NAME)
+    conn.row_factory = sqlite3.Row
+    return conn
 
-def load_limits():
-    if not os.path.exists(LIMIT_FILE):
-        return {}
-    with open(LIMIT_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+def init_db():
+    conn = get_db()
+    cur = conn.cursor()
 
+    # Users (auth réelle)
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            is_admin INTEGER DEFAULT 0
+        )
+    """)
 
-def save_limits(data):
-    with open(LIMIT_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+    # Comments
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS comments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            message TEXT NOT NULL,
+            created_at TEXT NOT NULL
+        )
+    """)
 
+    # Visitors per day
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS visits (
+            visit_date TEXT PRIMARY KEY,
+            count INTEGER DEFAULT 1
+        )
+    """)
 
-def can_export(ip):
-    """Retourne (bool, remaining)"""
-    data = load_limits()
-    today = datetime.now().strftime("%Y-%m-%d")
+    conn.commit()
+    conn.close()
 
-    if ip not in data:
-        data[ip] = {"date": today, "count": 0}
-        save_limits(data)
-        return True, EXPORT_LIMIT
+init_db()
 
-    if data[ip]["date"] != today:
-        data[ip] = {"date": today, "count": 0}
-        save_limits(data)
-        return True, EXPORT_LIMIT
+# ================= VISITORS COUNTER =================
+@app.before_request
+def count_visits():
+    today = date.today().isoformat()
+    conn = get_db()
+    cur = conn.cursor()
 
-    remaining = EXPORT_LIMIT - data[ip]["count"]
-    return remaining > 0, remaining
+    cur.execute("SELECT count FROM visits WHERE visit_date = ?", (today,))
+    row = cur.fetchone()
 
-
-def add_export(ip):
-    data = load_limits()
-    today = datetime.now().strftime("%Y-%m-%d")
-
-    if ip not in data:
-        data[ip] = {"date": today, "count": 0}
-
-    if data[ip]["date"] != today:
-        data[ip] = {"date": today, "count": 0}
-
-    data[ip]["count"] += 1
-    save_limits(data)
-
-
-# ----------------------------
-# 🖥️ ROUTES PRINCIPALES
-# ----------------------------
-
-@app.route("/", methods=["GET"])
-def index():
-    ip = request.remote_addr
-    ok, remaining = can_export(ip)
-    return render_template("index.html", lettre=None, remaining=remaining, can_export=ok)
-
-
-@app.route("/generer", methods=["POST"])
-def generer():
-    return generer_base(page="index")
-
-
-@app.route("/preview", methods=["POST"])
-def preview():
-    return generer_base(page="preview")
-
-
-@app.route("/robots.txt")
-def robots():
-    return send_from_directory("static", "robots.txt")
-
-
-@app.route("/sitemap.xml")
-def sitemap():
-    return send_from_directory("static", "sitemap.xml")
-
-
-# 🔐 ROUTE DE VÉRIFICATION GOOGLE (IMPORTANT)
-@app.route('/google70150802f6baa8d4.html')
-def google_verify():
-    return send_from_directory('static', 'google70150802f6baa8d4.html')
-
-
-def generer_base(page="index"):
-    champs = {
-        "nom": request.form.get("nom"),
-        "destinataire": request.form.get("destinataire"),
-        "nom_entreprise": request.form.get("nom_entreprise"),
-        "domaine": request.form.get("domaine"),
-        "objet": request.form.get("objet"),
-        "genre": request.form.get("genre"),
-        "exp_adresse": request.form.get("exp_adresse"),
-        "exp_cp": request.form.get("exp_cp"),
-        "exp_ville": request.form.get("exp_ville"),
-        "exp_email": request.form.get("exp_email"),
-        "exp_tel": request.form.get("exp_tel"),
-        "dest_adresse": request.form.get("dest_adresse"),
-        "dest_cp": request.form.get("dest_cp"),
-        "dest_ville": request.form.get("dest_ville"),
-        "signature": request.form.get("signature")
-    }
-
-    categorie = request.form.get("categorie") or ""
-    style = request.form.get("style") or ""
-
-    for k in champs:
-        champs[k] = champs[k] or ""
-
-    texte = generator.generer_lettre(categorie=categorie, style=style, champs=champs)
-
-    parts = [p.strip() for p in texte.split("\n\n") if p.strip()]
-    intro = parts[0] if len(parts) >= 1 else ""
-    conc = parts[-1] if len(parts) >= 2 else ""
-    corps = "\n\n".join(parts[1:-1]) if len(parts) > 2 else (parts[1] if len(parts) == 2 else "")
-
-    lettre = {
-        **champs,
-        "categorie": categorie,
-        "style": style,
-        "introduction": intro,
-        "corps": corps,
-        "conclusion": conc,
-        "texte": texte
-    }
-
-    ip = request.remote_addr
-    ok, remaining = can_export(ip)
-
-    if page == "preview":
-        return render_template("preview.html", lettre=lettre, remaining=remaining, can_export=ok)
+    if row:
+        cur.execute(
+            "UPDATE visits SET count = count + 1 WHERE visit_date = ?",
+            (today,)
+        )
     else:
-        return render_template("index.html", lettre=lettre, remaining=remaining, can_export=ok)
+        cur.execute(
+            "INSERT INTO visits (visit_date, count) VALUES (?, 1)",
+            (today,)
+        )
+
+    conn.commit()
+    conn.close()
+
+# ================= AUTH =================
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if not username or not password:
+            flash("Missing fields")
+            return redirect(url_for("register"))
+
+        conn = get_db()
+        cur = conn.cursor()
+        try:
+            cur.execute(
+                "INSERT INTO users (username, password) VALUES (?, ?)",
+                (username, generate_password_hash(password))
+            )
+            conn.commit()
+            flash("Account created. Please login.")
+            return redirect(url_for("login"))
+        except sqlite3.IntegrityError:
+            flash("Username already exists")
+        finally:
+            conn.close()
+
+    return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users WHERE username = ?", (username,))
+        user = cur.fetchone()
+        conn.close()
+
+        if user and check_password_hash(user["password"], password):
+            session["user_id"] = user["id"]
+            session["is_admin"] = user["is_admin"]
+            flash("Login successful")
+            return redirect(url_for("home"))
+
+        flash("Invalid credentials")
+
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("Logged out")
+    return redirect(url_for("home"))
+
+# ================= HOME =================
+@app.route("/")
+def home():
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT count FROM visits WHERE visit_date = ?",
+        (date.today().isoformat(),)
+    )
+    row = cur.fetchone()
+    visitors_today = row["count"] if row else 0
+
+    conn.close()
+    return render_template("home.html", visitors_today=visitors_today)
+
+# ================= MINI APPS =================
+@app.route("/open/<appname>")
+def open_app(appname):
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    ports = {
+        "job_application": 5001,
+        "project_internship": 5002,
+        "leave_request": 5003,
+        "project2": 5004,
+        "projects": 5005
+    }
+
+    if appname not in ports:
+        return "Mini-app non trouvée", 404
+
+    return redirect(f"http://127.0.0.1:{ports[appname]}/")
+
+# ================= EXPORT CONTROL =================
+@app.route("/can-export")
+def can_export():
+    if "user_id" not in session:
+        return "NO"
+    return "YES" if limits.can_export(session["user_id"]) else "LIMIT"
+
+# ================= COMMENTS =================
+@app.route("/comments", methods=["GET", "POST"])
+def comments():
+    conn = get_db()
+    cur = conn.cursor()
+
+    if request.method == "POST":
+        name = request.form.get("name")
+        message = request.form.get("message")
+
+        if name and message:
+            cur.execute(
+                "INSERT INTO comments (name, message, created_at) VALUES (?, ?, ?)",
+                (name, message, datetime.now().strftime("%Y-%m-%d %H:%M"))
+            )
+            conn.commit()
+            return redirect(url_for("comments"))
+
+    cur.execute("SELECT * FROM comments ORDER BY id DESC")
+    comments_list = cur.fetchall()
+    conn.close()
+
+    return render_template("comments.html", comments=comments_list)
+
+# ================= CONTACT =================
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        new_message = {
+            "name": request.form.get("name"),
+            "email": request.form.get("email"),
+            "message": request.form.get("message"),
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+
+        os.makedirs("data", exist_ok=True)
+        path = "data/messages.json"
+
+        messages = []
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                messages = json.load(f)
+
+        messages.append(new_message)
+
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(messages, f, indent=2, ensure_ascii=False)
+
+        flash("Your message has been sent successfully.")
+
+    return render_template("contact.html")
+
+# ================= ADMIN DASHBOARD =================
+@app.route("/admin")
+def admin():
+    if not session.get("is_admin"):
+        return redirect(url_for("login"))
+
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT visit_date, count FROM visits ORDER BY visit_date")
+    visits = cur.fetchall()
+
+    cur.execute("SELECT COUNT(*) as total FROM comments")
+    comments_count = cur.fetchone()["total"]
+
+    cur.execute("SELECT name, message, created_at FROM comments ORDER BY id DESC LIMIT 10")
+    comments = cur.fetchall()
+
+    conn.close()
+
+    return render_template(
+        "admin.html",
+        visits=visits,
+        comments_count=comments_count,
+        comments=comments
+    )
 
 
-# ----------------------------
-# 📄 EXPORT WORD
-# ----------------------------
-@app.route("/export/word", methods=["POST"])
-def export_word():
-    ip = request.remote_addr
-    ok, remaining = can_export(ip)
-    if not ok:
-        return redirect(url_for("index"))
 
-    add_export(ip)
-    lettre = dict(request.form)
-    fichier = outil_web.generer_word_temp(lettre)
-    return send_file(fichier, as_attachment=True, download_name="lettre.docx")
+# ================= STATIC PAGES =================
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
+@app.route("/privacy")
+def privacy():
+    return render_template(
+        "privacy.html",
+        last_update=date.today().strftime("%Y-%m-%d")
+    )
 
-# ----------------------------
-# 📄 EXPORT PDF
-# ----------------------------
-@app.route("/export/pdf", methods=["POST"])
-def export_pdf():
-    ip = request.remote_addr
-    ok, remaining = can_export(ip)
-    if not ok:
-        return redirect(url_for("index"))
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
 
-    add_export(ip)
-    lettre = dict(request.form)
-    fichier = outil_web.generer_pdf_temp(lettre)
-    return send_file(fichier, as_attachment=True, download_name="lettre.pdf")
-
+# ================= DEBUG =================
+print("static trouvés :", os.listdir("static"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

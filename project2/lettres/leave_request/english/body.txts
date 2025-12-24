@@ -1,0 +1,8 @@
+Dear {supervisor_name},
+
+I would like to request {total_days} day(s) of {leave_type} leave from {start_date} to {end_date}.
+The reason for this leave is as follows:
+{reason}
+
+{% if emergency_contact %}Emergency Contact: {emergency_contact}{% endif %}
+{% if backup_plan %}Backup plan / coverage: {backup_plan}{% endif %}

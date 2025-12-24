@@ -1,0 +1,135 @@
+
+/* ================================
+       LETTRIX PROFESSIONAL THEME
+=================================*/
+
+/* ----- GLOBAL ----- */
+body {
+    background: #121212; /* ton thème sombre */
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #ffffff; /* texte général blanc */
+    padding: 20px;
+}
+
+/* ----- NAVBAR ----- */
+.navbar-dark {
+    background: #111 !important;
+}
+
+/* ----- CARD ----- */
+.card {
+    background: #1b1b1b;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    margin-bottom: 30px;
+    border: 1px solid #222;
+}
+
+/* ----- TITRES / LABELS ----- */
+h1, h2, h3, label {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ----- INPUTS / TEXTAREA / SELECT ----- */
+.form-control {
+    background: #1b1b1b;
+    border: 1px solid #333;
+    color: #fff; /* 🔥 FIX LE TEXTE INVISIBLE */
+    border-radius: 6px;
+}
+
+.form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74,144,226,0.4);
+    outline: none;
+}
+
+/* ----- BUTTONS ----- */
+.btn-light {
+    background: #fff;
+    color: #000;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.btn-outline-light {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.btn-light:hover {
+    background: #e6e6e6;
+}
+
+.btn-outline-light:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* ----- PREVIEW PANEL ----- */
+textarea[name="generated_text"] {
+    background: #1b1b1b;
+    color: #fff; /* texte du panel généré visible */
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+/* ----- FOOTER ----- */
+footer {
+    color: #888;
+}
+
+/* ----- FILE UPLOAD ----- */
+input[type="file"] {
+    padding: 3px;
+    color: #fff;
+}
+.btn-blue {
+    background: #1a73e8;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+}
+
+.btn-blue:hover {
+    background: #155ab6;
+}
+
+/* ===========================================
+       CUSTOM BUTTON COLORS (BLUE / ORANGE)
+=========================================== */
+
+/* 🔵 Bouton BLUE (Generate Letter) */
+.btn-blue {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-blue:hover {
+    background-color: #0069d9 !important;
+    color: white !important;
+}
+
+/* 🟠 Bouton ORANGE (Preview) */
+.btn-orange {
+    background-color: #ff9800 !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-orange:hover {
+    background-color: #e68a00 !important;
+    color: white !important;
+}

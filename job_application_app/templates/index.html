@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3 text-center" style="color:#ffcc00; font-weight:700;">
+    Generate Your Job Application Letter
+    <span style="font-size:26px; margin-left:6px;">📝</span>
+</h2>
+
+<form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="company_name">Company Name</label>
+        <input type="text" class="form-control" name="company_name" value="{{ company_name }}">
+    </div>
+    <div class="mb-3">
+    <label for="company_address">Company Address</label>
+    <input type="text" class="form-control" name="company_address" value="{{ company_address }}">
+</div>
+
+<div class="mb-3">
+    <label for="company_email">Company Email</label>
+    <input type="email" class="form-control" name="company_email" value="{{ company_email }}">
+</div>
+
+<div class="mb-3">
+    <label for="company_phone">Company Phone</label>
+    <input type="text" class="form-control" name="company_phone" value="{{ company_phone }}">
+</div>
+
+    <div class="mb-3">
+        <label for="applicant_name">Your Name</label>
+        <input type="text" class="form-control" name="applicant_name" value="{{ applicant_name }}">
+    </div>
+    <!-- NEW FIELDS -->
+    <div class="mb-3">
+        <label for="applicant_email">Your Email</label>
+        <input type="email" class="form-control" name="applicant_email" value="{{ applicant_email }}">
+    </div>
+    <div class="mb-3">
+        <label for="applicant_phone">Your Phone</label>
+        <input type="text" class="form-control" name="applicant_phone" value="{{ applicant_phone }}">
+    </div>
+    <div class="mb-3">
+        <label for="why_you_want">Why You Want This Job</label>
+        <textarea class="form-control" name="why_you_want">{{ why_you_want }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="position_applied">Position Applied</label>
+        <input type="text" class="form-control" name="position_applied" value="{{ position_applied }}">
+    </div>
+    <div class="mb-3">
+        <label for="skills">Skills</label>
+        <input type="text" class="form-control" name="skills" value="{{ skills }}">
+    </div>
+    <div class="mb-3">
+        <label for="experience_years">Years of Experience</label>
+        <input type="text" class="form-control" name="experience_years" value="{{ experience_years }}">
+    </div>
+    <div class="mb-3">
+        <label for="achievements">Achievements</label>
+        <textarea class="form-control" name="achievements">{{ achievements }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="cover_letter_text">Additional Cover Letter Text</label>
+        <textarea class="form-control" name="cover_letter_text">{{ cover_letter_text }}</textarea>
+
+
+</div>
+
+    </div>
+    <div class="mb-3">
+        <label for="company_logo_file">Company Logo (optional)</label>
+        <input type="file" class="form-control" name="company_logo_file">
+
+    </div>
+    <button type="submit" class="btn btn-blue">Generate Letter</button>
+
+</div>
+
+</form>
+
+{% if generated_text %}
+<hr>
+<h3>Generated Letter</h3>
+<form method="POST" action="{{ url_for('preview') }}">
+    <input type="hidden" name="generated_text" value="{{ generated_text }}">
+    <textarea class="form-control mb-3" rows="15">{{ generated_text }}</textarea>
+    <button type="submit" class="btn btn-orange">Preview</button>
+</form>
+{% endif %}
+{% endblock %}

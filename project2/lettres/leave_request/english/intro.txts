@@ -1,0 +1,6 @@
+To: {supervisor_name}
+From: {employee_full_name} ({position})
+{% if department %}Department: {department}{% endif %}
+Date: {submission_date}
+
+Subject: Leave Request ({leave_type})

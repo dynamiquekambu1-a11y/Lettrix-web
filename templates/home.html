@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lettrix</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/image.png') }}" class="logo-img">
+      <div class="logo-text">LETTRIX</div>
+    </div>
+
+    <nav class="menu-list">
+      <a href="/open/projects">📦 Certificate Generator</a>
+      <a href="/open/job_application">📄 Resignation Letter</a>
+      <a href="/open/project_internship">🎓 Leave Request Letter</a>
+      <a href="/open/leave_request">📝 Internship Application</a>
+      <a href="/open/project2">📁 Job Application</a>
+    </nav>
+
+    <div class="login-box">
+      <a href="/login">🔐 Login</a>
+    </div>
+
+    <div class="title-bar">
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+
+      <div class="stats">
+        <span>👁 Visitors</span>
+        <span>⬇ Exports</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ===== CONTENT RIGHT ===== -->
+  <main class="content">
+
+  <!-- Presentation -->
+<img src="{{ url_for('static', filename='images/presentation.png') }}" class="hero-img">
+
+<h1>Lettrix – Smart Letter Generator</h1>
+
+<p><strong>Definition:</strong></p>
+<p>Lettrix is a modern web application built to assist individuals and professionals in creating high-quality letters effortlessly. The platform covers various types of letters, from job applications and internship requests to project proposals and leave notifications. Each letter is structured according to professional standards, ensuring clarity, appropriate tone, and proper formatting. Users can focus on their message rather than worrying about style or structure, making it ideal for beginners and experts alike.</p>
+<p>The application provides step-by-step guidance and intuitive forms, allowing users to fill in the necessary details without stress. With Lettrix, even complex letters become manageable, and the output is always polished and ready for submission. The platform emphasizes simplicity without sacrificing professionalism, making it a reliable tool for everyday communication.</p>
+
+<p><strong>Objective:</strong></p>
+<p>The primary objective of Lettrix is to remove the anxiety and confusion often associated with formal letter writing. Users are provided with ready-made templates and a guided workflow that ensures each document is complete and properly formatted. By minimizing the effort needed to create letters, Lettrix allows users to focus on the content itself, boosting their confidence in sending professional correspondence.</p>
+<p>Another key goal is to standardize the quality of letters produced. Whether for academic purposes, career applications, or business communications, Lettrix helps users maintain consistency in tone, grammar, and layout. The application empowers individuals to present themselves effectively in any written interaction, ensuring their messages are clear and impactful.</p>
+
+<p><strong>Purpose:</strong></p>
+<p>Lettrix aims to save users time while improving the overall quality of communication. Poorly structured letters can create confusion or reflect negatively on the sender, potentially affecting opportunities and relationships. Lettrix addresses this by providing templates and automated formatting tools that guide users in crafting precise, persuasive, and visually appealing letters.</p>
+<p>The purpose also extends to education: users learn best practices in formal writing as they use the platform. This dual benefit of efficiency and learning makes Lettrix a valuable assistant for students, professionals, and anyone who regularly communicates in writing. Ultimately, it ensures that every letter sent represents the sender in the best possible way.</p>
+
+<p><strong>Importance:</strong></p>
+<p>Formal letter writing is a skill many find challenging, and mistakes can inadvertently undermine a message. Lettrix bridges this gap by offering an accessible platform that produces professional letters quickly while guiding users on proper structure and language. Its importance lies in enhancing credibility, fostering clear communication, and building professional confidence.</p>
+<p>By simplifying the process, Lettrix enables users to focus on the content rather than worrying about mistakes or formatting. Whether for personal growth or career advancement, the application becomes a crucial tool that supports effective and professional written communication. It ensures that every message sent leaves a strong and positive impression.</p>
+
+<p><strong>How it works:</strong></p>
+<p>Lettrix functions through a simple, intuitive workflow. Users select the type of letter they need, fill out the form with relevant details such as recipient information, dates, and objectives, and then submit the form. The application then generates a well-structured PDF letter that is ready to download or print.</p>
+<p>The process guarantees accuracy and consistency while minimizing user effort. Even users with little experience in formal writing can create high-quality letters in minutes. This approach streamlines communication and ensures that important messages are delivered in a professional format every time.</p>
+
+<p><strong>Benefits:</strong></p>
+<p>Using Lettrix offers numerous advantages beyond time savings. Users receive access to professional templates that can be tailored to their specific needs, ensuring uniqueness and personalization. The application reduces errors, standardizes formatting, and enhances the credibility of the sender, which is essential in academic, professional, and business contexts.</p>
+<p>By providing structured guidance and polished outputs, Lettrix increases the likelihood of successful communication. Whether applying for a job, requesting a leave, or submitting a proposal, users can rely on the platform to produce letters that impress and persuade recipients effectively.</p>
+
+<p><strong>Future Perspective:</strong></p>
+<p>Lettrix continues to evolve to meet growing user needs. Upcoming enhancements include AI-assisted suggestions, multi-language support, and advanced personalization options. Users will also benefit from analytics features that provide insights into how recipients engage with their letters.</p>
+<p>This forward-looking approach ensures that Lettrix remains a practical, adaptable, and indispensable tool for professional communication. By integrating cutting-edge technology and user-centric design, the application is positioned to help individuals succeed in a wide range of personal, academic, and professional contexts.</p>
+
+    <!-- Results -->
+    <h2>Generated PDF Examples</h2>
+    <div class="results-grid">
+      <img src="{{ url_for('static', filename='images/result1.png') }}">
+      <img src="{{ url_for('static', filename='images/result2.png') }}">
+      <img src="{{ url_for('static', filename='images/result3.png') }}">
+    </div>
+
+    <!-- Guides -->
+    <h2>How to Use Lettrix</h2>
+    <div class="video-grid">
+      <video controls>
+        <source src="{{ url_for('static', filename='videos/guide1.mp4') }}" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="{{ url_for('static', filename='videos/guide2.mp4') }}" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments-cta">
+      <a href="/comments" class="comment-btn">💬 View & Add Comments</a>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

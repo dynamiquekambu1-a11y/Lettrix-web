@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card shadow-lg p-4 mb-4">
+  <h3 class="mb-3"><i class="bi bi-pen"></i> Generate Work Certificate</h3>
+
+  <!-- 🔥 CORRECTION : enctype ajouté pour permettre l’upload d’image -->
+  <form method="post" enctype="multipart/form-data" action="{{ url_for('generate') }}">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Company name *</label>
+        <input name="company_name" class="form-control" value="{{ company_name }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Company address</label>
+        <input name="company_address" class="form-control" value="{{ company_address }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label>Company phone</label>
+        <input name="company_phone" class="form-control" value="{{ company_phone }}">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Company email</label>
+        <input name="company_email" class="form-control" value="{{ company_email }}">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label>Company logo (optional)</label>
+
+        <!-- 🔥 upload fixe -->
+        <input type="file" name="company_logo_file" class="form-control">
+
+        <!-- garder l'ancien logo si aucun fichier n'est uploadé -->
+        <input type="hidden" name="company_logo" value="{{ company_logo }}">
+      </div>
+    </div>
+
+    <hr style="border-color:#222;">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Employee name *</label>
+        <input name="employee_name" class="form-control" value="{{ employee_name }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Position</label>
+        <input name="position" class="form-control" value="{{ position }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Department</label>
+        <input name="department" class="form-control" value="{{ department }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Contract type</label>
+        <input name="contract_type" class="form-control" value="{{ contract_type }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Start date (YYYY-MM-DD)</label>
+        <input name="start_date" class="form-control" value="{{ start_date }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>End date (YYYY-MM-DD)</label>
+        <input name="end_date" class="form-control" value="{{ end_date }}">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Work summary (short)</label>
+      <textarea name="work_summary" rows="3" class="form-control">{{ work_summary }}</textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Skills (comma separated)</label>
+        <input name="skills" class="form-control" value="{{ skills }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Behaviour / Conduct</label>
+        <input name="behaviour" class="form-control" value="{{ behaviour }}">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Final statement (optional)</label>
+      <input name="final_statement" class="form-control" value="{{ final_statement }}">
+    </div>
+
+    <hr style="border-color:#222;">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Signer name</label>
+        <input name="signer_name" class="form-control" value="{{ signer_name }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Signer role</label>
+        <input name="signer_role" class="form-control" value="{{ signer_role }}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Signature place</label>
+        <input name="signature_place" class="form-control" value="{{ signature_place }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Signature date (YYYY-MM-DD)</label>
+        <input name="signature_date" class="form-control" value="{{ signature_date }}">
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-light" type="submit"><i class="bi bi-gear"></i> Generate</button>
+      <a class="btn btn-outline-light" href="{{ url_for('index') }}">Reset</a>
+    </div>
+
+  </form>
+</div>
+
+
+<div class="card shadow-lg p-3">
+  <h4>Generated text</h4>
+
+  <form method="post" action="{{ url_for('preview') }}">
+
+    <textarea name="generated_text" rows="12" class="form-control mb-2">{{ generated_text }}</textarea>
+
+    <!-- pass all fields hidden to preview -->
+    {% for k, v in {
+            'company_name': company_name,
+            'company_address': company_address,
+            'company_phone': company_phone,
+            'company_email': company_email,
+            'company_logo': company_logo,
+            'employee_name': employee_name,
+            'position': position,
+            'department': department,
+            'start_date': start_date,
+            'end_date': end_date,
+            'contract_type': contract_type,
+            'work_summary': work_summary,
+            'skills': skills,
+            'behaviour': behaviour,
+            'final_statement': final_statement,
+            'signer_name': signer_name,
+            'signer_role': signer_role,
+            'signature_place': signature_place,
+            'signature_date': signature_date
+        }.items() %}
+      <input type="hidden" name="{{ k }}" value="{{ v }}">
+    {% endfor %}
+
+    <button class="btn btn-outline-light"><i class="bi bi-eye"></i> Preview</button>
+  </form>
+</div>
+
+{% endblock %}
