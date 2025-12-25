@@ -152,11 +152,10 @@ def home():
     return render_template("home.html", visitors_today=visitors_today)
 
 # ================= MINI APPS =================
+# ================= MINI APPS =================
 @app.route("/open/<appname>")
 def open_app(appname):
-    if "user_id" not in session:
-        return redirect(url_for("login"))
-
+    # Suppression de la vérification de session pour login
     ports = {
         "job_application": 5001,
         "project_internship": 5002,
@@ -173,9 +172,8 @@ def open_app(appname):
 # ================= EXPORT CONTROL =================
 @app.route("/can-export")
 def can_export():
-    if "user_id" not in session:
-        return "NO"
-    return "YES" if limits.can_export(session["user_id"]) else "LIMIT"
+    # Suppression de la vérification de session pour login
+    return "YES"  # tout le monde peut exporter
 
 # ================= COMMENTS =================
 @app.route("/comments", methods=["GET", "POST"])
@@ -278,4 +276,5 @@ def terms():
 print("static trouvés :", os.listdir("static"))
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
