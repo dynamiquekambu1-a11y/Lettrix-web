@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4 text-center" style="color:#ffcc00; font-weight:700;">
+    Generate Your Job Application Letter 📝
+</h2>
+
+<form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
+
+    <!-- COMPANY INFO -->
+    <h5 class="mt-3">Company Information</h5>
+
+    <div class="mb-3">
+        <label>Company Name</label>
+        <input type="text" class="form-control" name="company_name" value="{{ company_name }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Company Address</label>
+        <input type="text" class="form-control" name="company_address" value="{{ company_address }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Company Email</label>
+        <input type="email" class="form-control" name="company_email" value="{{ company_email }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Company Phone</label>
+        <input type="text" class="form-control" name="company_phone" value="{{ company_phone }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Company Logo (optional)</label>
+        <input type="file" class="form-control" name="company_logo_file">
+    </div>
+
+    <!-- APPLICANT INFO -->
+    <h5 class="mt-4">Applicant Information</h5>
+
+    <div class="mb-3">
+        <label>Your Name</label>
+        <input type="text" class="form-control" name="applicant_name" value="{{ applicant_name }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Your Email</label>
+        <input type="email" class="form-control" name="applicant_email" value="{{ applicant_email }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Your Phone</label>
+        <input type="text" class="form-control" name="applicant_phone" value="{{ applicant_phone }}">
+    </div>
+
+    <!-- JOB DETAILS -->
+    <h5 class="mt-4">Job Details</h5>
+
+    <div class="mb-3">
+        <label>Position Applied</label>
+        <input type="text" class="form-control" name="position_applied" value="{{ position_applied }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Why You Want This Job</label>
+        <textarea class="form-control" name="why_you_want" rows="3">{{ why_you_want }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Skills</label>
+        <input type="text" class="form-control" name="skills" value="{{ skills }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Years of Experience</label>
+        <input type="text" class="form-control" name="experience_years" value="{{ experience_years }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Achievements</label>
+        <textarea class="form-control" name="achievements" rows="3">{{ achievements }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Additional Cover Letter Text</label>
+        <textarea class="form-control" name="cover_letter_text" rows="3">{{ cover_letter_text }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 mt-3">
+        Generate Letter
+    </button>
+</form>
+
+{% if generated_text %}
+<hr>
+
+<h4 class="mt-4">Generated Letter</h4>
+
+<textarea class="form-control mb-3" rows="15" readonly>{{ generated_text }}</textarea>
+
+<!-- EXPORT PDF -->
+<form method="POST" action="{{ url_for('export_pdf_route') }}">
+    <input type="hidden" name="generated_text" value="{{ generated_text }}">
+
+    <!-- resend all metadata -->
+    <input type="hidden" name="company_name" value="{{ company_name }}">
+    <input type="hidden" name="company_address" value="{{ company_address }}">
+    <input type="hidden" name="company_email" value="{{ company_email }}">
+    <input type="hidden" name="company_phone" value="{{ company_phone }}">
+    <input type="hidden" name="company_logo_path" value="{{ company_logo_path }}">
+
+    <input type="hidden" name="applicant_name" value="{{ applicant_name }}">
+    <input type="hidden" name="applicant_email" value="{{ applicant_email }}">
+    <input type="hidden" name="applicant_phone" value="{{ applicant_phone }}">
+
+    <input type="hidden" name="position_applied" value="{{ position_applied }}">
+    <input type="hidden" name="skills" value="{{ skills }}">
+    <input type="hidden" name="experience_years" value="{{ experience_years }}">
+    <input type="hidden" name="achievements" value="{{ achievements }}">
+    <input type="hidden" name="cover_letter_text" value="{{ cover_letter_text }}">
+
+    <button type="submit" class="btn btn-danger w-100">
+        Export PDF
+    </button>
+</form>
+{% endif %}
+
+{% endblock %}

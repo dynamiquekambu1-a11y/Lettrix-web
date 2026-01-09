@@ -1,0 +1,5 @@
+{% if signer_name or signer_role %}
+Sincerely,
+{signer_name}
+{signer_role}
+{% endif %}

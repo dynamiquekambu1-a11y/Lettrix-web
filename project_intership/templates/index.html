@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3 text-center" style="color:#ffcc00; font-weight:700;">
+    Generate Internship Application Letter
+    <span style="font-size:26px; margin-left:6px;">📝</span>
+</h2>
+
+<!-- FORMULAIRE PRINCIPAL -->
+<form method="post" enctype="multipart/form-data" action="{{ url_for('generate') }}">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Applicant full name *</label>
+            <input name="applicant_name" class="form-control" value="{{ applicant_name }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Email address *</label>
+            <input name="email" class="form-control" value="{{ email }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Phone number</label>
+            <input name="phone" class="form-control" value="{{ phone }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>University / School</label>
+            <input name="university" class="form-control" value="{{ university }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Field of study / Major</label>
+            <input name="field_of_study" class="form-control" value="{{ field_of_study }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Current level</label>
+            <input name="current_level" class="form-control" value="{{ current_level }}">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Company name *</label>
+            <input name="company_name" class="form-control" value="{{ company_name }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Internship position / Department *</label>
+            <input name="internship_position" class="form-control" value="{{ internship_position }}">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Company full address *</label>
+        <input name="company_address" class="form-control" value="{{ company_address }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Motivation (why do you want this internship?)</label>
+        <textarea name="motivation" rows="3" class="form-control">{{ motivation }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Key skills</label>
+        <input name="key_skills" class="form-control" value="{{ key_skills }}">
+    </div>
+
+    <div class="mb-3">
+        <label>Relevant academic projects / experiences</label>
+        <textarea name="academic_projects" rows="3" class="form-control">{{ academic_projects }}</textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label>Internship duration / availability</label>
+            <input name="internship_duration" class="form-control" value="{{ internship_duration }}">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label>Date</label>
+            <input name="date" class="form-control" value="{{ date }}">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Company logo (optional)</label>
+        <input type="file" name="company_logo_file" class="form-control">
+        <input type="hidden" name="company_logo" value="{{ company_logo }}">
+    </div>
+
+    <button class="btn btn-light"><i class="bi bi-gear"></i> Generate</button>
+</form>
+
+<!-- RESULTAT GENERÉ -->
+{% if generated_text %}
+<div class="card p-3 mt-3">
+    <h5>Generated text</h5>
+    <form method="post" action="{{ url_for('preview') }}">
+        <textarea name="generated_text" rows="12" class="form-control mb-2">{{ generated_text }}</textarea>
+
+        {% for k, v in request.form.items() %}
+            <input type="hidden" name="{{ k }}" value="{{ v }}">
+        {% endfor %}
+
+        <button class="btn btn-outline-light"><i class="bi bi-eye"></i> Preview</button>
+    </form>
+
+    <!-- EXPORT PDF -->
+    <form method="post" action="{{ url_for('export_pdf_route') }}">
+        <input type="hidden" name="generated_text" value="{{ generated_text }}">
+        <input type="hidden" name="company_logo_path" value="{{ company_logo_path }}">
+        {% for k, v in request.form.items() %}
+            <input type="hidden" name="{{ k }}" value="{{ v }}">
+        {% endfor %}
+        <button class="btn btn-primary mt-2">Export PDF</button>
+    </form>
+
+    <!-- EXPORT WORD -->
+    <form method="post" action="{{ url_for('export_word_route') }}">
+        <input type="hidden" name="generated_text" value="{{ generated_text }}">
+        {% for k, v in request.form.items() %}
+            <input type="hidden" name="{{ k }}" value="{{ v }}">
+        {% endfor %}
+        <button class="btn btn-secondary mt-2">Export Word</button>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

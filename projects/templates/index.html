@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4 class="mb-3">Company Information</h4>
+
+<form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <label>Company Name *</label>
+        <input name="company_name" class="form-control" required value="{{ company_name }}">
+    </div>
+    <div class="col-md-6">
+        <label>Company Email</label>
+        <input name="company_email" class="form-control" value="{{ company_email }}">
+    </div>
+    <div class="col-md-6">
+        <label>Company Phone</label>
+        <input name="company_phone" class="form-control" value="{{ company_phone }}">
+    </div>
+    <div class="col-md-6">
+        <label>Company Logo</label>
+        <input type="file" name="company_logo_file" class="form-control">
+    </div>
+</div>
+
+<hr>
+
+<h4 class="mb-3">Employee Information</h4>
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <label>Employee Full Name *</label>
+        <input name="employee_full_name" class="form-control" required value="{{ employee_full_name }}">
+    </div>
+    <div class="col-md-6">
+        <label>Current Job Title / Position</label>
+        <input name="current_job_title" class="form-control" value="{{ current_job_title }}">
+    </div>
+    <div class="col-md-6">
+        <label>Manager / Supervisor Name</label>
+        <input name="manager_name" class="form-control" value="{{ manager_name }}">
+    </div>
+    <div class="col-md-6">
+        <label>Date of the Letter</label>
+        <input type="date" name="letter_date" class="form-control" value="{{ letter_date }}">
+    </div>
+    <div class="col-md-6">
+        <label>Last Working Day</label>
+        <input type="date" name="last_working_day" class="form-control" value="{{ last_working_day }}">
+    </div>
+</div>
+
+<hr>
+
+<h4 class="mb-3">Optional Sections</h4>
+<div class="mb-3">
+    <label>Reason for Resignation</label>
+    <textarea name="reason_for_resignation" class="form-control" rows="2">{{ reason_for_resignation }}</textarea>
+</div>
+<div class="mb-3">
+    <label>Thank You Message</label>
+    <textarea name="thank_you_message" class="form-control" rows="2">{{ thank_you_message }}</textarea>
+</div>
+<div class="mb-4">
+    <label>Willingness to Help with the Transition</label>
+    <textarea name="transition_help" class="form-control" rows="2">{{ transition_help }}</textarea>
+</div>
+
+<button type="submit" class="btn btn-main w-100">Generate Resignation Letter</button>
+</form>
+
+{% if generated_text %}
+<hr class="my-4">
+<form method="POST" action="{{ url_for('preview') }}">
+    <input type="hidden" name="generated_text" value="{{ generated_text }}">
+    {% for key, value in fields.items() %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}">
+    {% endfor %}
+    <button class="btn btn-outline-light w-100">Preview & Export</button>
+</form>
+{% endif %}
+
+{% endblock %}
