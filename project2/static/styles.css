@@ -1,0 +1,86 @@
+/* =====================
+   GLOBAL
+===================== */
+
+body.bg-dark {
+  background-color: #0f172a !important; /* bleu nuit */
+}
+
+.card {
+  background-color: #111827; /* gris foncé lisible */
+  border: 1px solid #1f2937;
+}
+
+label {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+h3, h4 {
+  color: #f9fafb;
+}
+
+/* =====================
+   INPUTS
+===================== */
+
+.form-control,
+textarea {
+  background-color: #020617;
+  color: #f9fafb;
+  border: 1px solid #334155;
+}
+
+.form-control:focus,
+textarea:focus {
+  background-color: #020617;
+  color: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: none;
+}
+
+/* =====================
+   BUTTONS (IMPORTANT)
+===================== */
+
+/* Generate → BLEU */
+button[type="submit"] {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Preview → JAUNE */
+form[action*="preview"] button {
+  background-color: #facc15 !important;
+  border-color: #facc15 !important;
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+/* Reset & Back */
+a.btn-outline-light,
+a.btn-secondary {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border: 1px solid #374151;
+}
+
+/* Hover effects */
+button:hover,
+a.btn:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   PREVIEW BOX
+===================== */
+
+.preview-box {
+  background-color: #020617;
+  color: #f9fafb;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+}

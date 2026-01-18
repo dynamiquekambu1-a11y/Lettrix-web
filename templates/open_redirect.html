@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+    window.location.href = "{{ target_url }}";
+</script>
+<p>Redirection… <a href="{{ target_url }}">Cliquez ici si vous n'êtes pas redirigé</a></p>
+{% endblock %}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page_title or "Lettrix – Smart Letter Generator" }}</title>
+  <meta name="description" content="{{ page_description or "Lettrix helps you generate professional letters quickly and easily." }}">
+  <link rel="canonical" href="{{ canonical_url or request.url }}">
+
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page_title or 'Lettrix – Smart Letter Generator' }}">
+  <meta property="og:description" content="{{ page_description or 'Lettrix helps you generate professional letters quickly and easily.' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ canonical_url or request.url }}">
+  <meta property="og:image" content="{{ og_image or url_for('static', filename='images/result1.png', _external=True) }}">
+  <meta property="og:site_name" content="Lettrix">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title or 'Lettrix – Smart Letter Generator' }}">
+  <meta name="twitter:description" content="{{ page_description or 'Lettrix helps you generate professional letters quickly and easily.' }}">
+  <meta name="twitter:image" content="{{ og_image or url_for('static', filename='images/result1.png', _external=True) }}">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1242280846989922"
+      crossorigin="anonymous"></script>
+</head>
+
+
+
+
+  <meta charset="UTF-8">
+  <title>Lettrix</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1242280846989922"
+      crossorigin="anonymous"></script>
+
+  <style>
+    /* Scroll Buttons */
+    .scroll-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 204, 0, 0.6);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .scroll-btn.visible {
+      opacity: 0.8;
+      pointer-events: auto;
+    }
+
+    .scroll-left {
+      left: 10px;
+    }
+
+    .scroll-right {
+      right: 10px;
+    }
+
+    .scroll-btn:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/image.png') }}" class="logo-img">
+      <div class="logo-text">LETTRIX</div>
+    </div>
+
+    <nav class="menu-list">
+      <a href="/open/projects">📦 Resignation letter</a>
+      <a href="/open/job_application">📄 Job Application</a>
+      <a href="/open/project_internship">🎓 internship letter</a>
+      <a href="/open/work_certificate">📝 Work Certificate</a>
+      <a href="/open/project2">📁 leave request</a>
+    </nav>
+
+    <div class="login-box">
+      {% if session.get('user_id') %}
+        <a href="/logout">🔐 Logout</a>
+      {% else %}
+        <a href="/login">🔐 Login</a>
+      {% endif %}
+    </div>
+
+
+
+    <div class="title-bar">
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+<!-- Donation via WhatsApp -->
+<div style="
+  margin: 30px auto;
+  text-align: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+  max-width: 400px;
+">
+  <p style="margin-bottom: 10px; font-size: 14px;">
+    ❤️ Support Lettrix – Keep it free
+  </p>
+  <a href="https://wa.me/27750556027?text=Hello%20Lettrix%20Team,%20I%20would%20like%20to%20support%20the%20project"
+     target="_blank"
+     style="
+       display: inline-block;
+       background: #25D366;
+       color: white;
+       padding: 10px 18px;
+       border-radius: 25px;
+       text-decoration: none;
+       font-weight: bold;
+     ">
+    💬 Support via WhatsApp
+  </a>
+</div>
+
+
+
+      <div class="stats">
+        <span>👁 Visitors: {{ visitors_today }}</span>
+        <span>⬇ Exports</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== CONTENT RIGHT ===== -->
+  <main class="content">
+
+    <!-- Google AdSense -->
+    <div class="ad-container" style="margin:10px 0;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1242280846989922"
+           data-ad-slot="5633977698"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Presentation -->
+    <img src="{{ url_for('static', filename='images/presentation.png') }}" class="hero-img">
+
+    <h1>Lettrix – Smart Letter Generator</h1>
+
+    <p><strong>Definition:</strong></p>
+    <p>Lettrix is a modern web application built to assist individuals and professionals in creating high-quality letters effortlessly. The platform covers various types of letters, from job applications and internship requests to project proposals and leave notifications. Each letter is structured according to professional standards, ensuring clarity, appropriate tone, and proper formatting. Users can focus on their message rather than worrying about style or structure, making it ideal for beginners and experts alike.</p>
+
+    <p><strong>Objective:</strong></p>
+    <p>The primary objective of Lettrix is to remove the anxiety and confusion often associated with formal letter writing. Users are provided with ready-made templates and a guided workflow that ensures each document is complete and properly formatted. By minimizing the effort needed to create letters, Lettrix allows users to focus on the content itself, boosting their confidence in sending professional correspondence.</p>
+
+    <p><strong>Purpose:</strong></p>
+    <p>Lettrix aims to save users time while improving the overall quality of communication. Poorly structured letters can create confusion or reflect negatively on the sender, potentially affecting opportunities and relationships. Lettrix addresses this by providing templates and automated formatting tools that guide users in crafting precise, persuasive, and visually appealing letters.</p>
+
+    <p><strong>Importance:</strong></p>
+    <p>Formal letter writing is a skill many find challenging, and mistakes can inadvertently undermine a message. Lettrix bridges this gap by offering an accessible platform that produces professional letters quickly while guiding users on proper structure and language. Its importance lies in enhancing credibility, fostering clear communication, and building professional confidence.</p>
+
+    <p><strong>How it works:</strong></p>
+    <p>Users select the type of letter they need, fill out the form with relevant details, and submit. Lettrix generates a polished PDF letter ready for download or print.</p>
+
+    <p><strong>Benefits:</strong></p>
+    <p>Professional templates, reduced errors, consistent formatting, and enhanced credibility. Perfect for academic, professional, and business use.</p>
+
+    <p><strong>Future Perspective:</strong></p>
+    <p>Lettrix will evolve with AI suggestions, multi-language support, personalization options, and analytics features for improved engagement.</p>
+
+<!-- Floating Affiliate Banner -->
+<div style="
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 204, 0, 0.6); /* transparence ici */
+  padding: 8px 18px;
+  border-radius: 8px;
+  z-index: 1000;
+">
+  <a href="TON-LIEN-D-AFFILIATION" target="_blank"
+     style="
+       font-weight: bold;
+       color: #000;
+       text-decoration: none;
+       font-size: 14px;
+     ">
+    Improve your writing with Grammarly – Try Free!
+  </a>
+</div>
+
+
+    <!-- Results -->
+    <h2>Generated PDF Examples</h2>
+    <div class="results-grid">
+      <img src="{{ url_for('static', filename='images/result1.png') }}">
+      <img src="{{ url_for('static', filename='images/result2.png') }}">
+      <img src="{{ url_for('static', filename='images/result3.png') }}">
+    </div>
+
+    <!-- Guides -->
+    <h2>How to Use Lettrix</h2>
+    <div class="video-grid">
+      <video controls>
+        <source src="{{ url_for('static', filename='videos/guide1.mp4') }}" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="{{ url_for('static', filename='videos/guide2.mp4') }}" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments-cta">
+      <a href="/comments" class="comment-btn">💬 View & Add Comments</a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Scroll Buttons -->
+<div class="scroll-btn scroll-left">⬆</div>
+<div class="scroll-btn scroll-right">⬇</div>
+
+<script>
+  const scrollLeftBtn = document.querySelector('.scroll-left');
+  const scrollRightBtn = document.querySelector('.scroll-right');
+
+  // Fonction scroll
+  scrollLeftBtn.onclick = () => window.scrollBy({ top: -300, behavior: 'smooth' });
+  scrollRightBtn.onclick = () => window.scrollBy({ top: 300, behavior: 'smooth' });
+
+  // Afficher boutons uniquement si la souris bouge
+  let timeout;
+  window.addEventListener('mousemove', () => {
+    scrollLeftBtn.classList.add('visible');
+    scrollRightBtn.classList.add('visible');
+
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      scrollLeftBtn.classList.remove('visible');
+      scrollRightBtn.classList.remove('visible');
+    }, 1500); // disparaît après 1,5 sec d'inactivité
+  });
+</script>
+
+</body>
+</html>

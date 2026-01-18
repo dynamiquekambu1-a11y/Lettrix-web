@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Lettrix{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    LETTRIX
+  </div>
+  <nav>
+    <a href="/">Dashboard</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+
+    {% if session.get("user_id") %}
+      <a href="/logout" class="btn danger">Logout</a>
+    {% else %}
+      <a href="/login" class="btn">Login</a>
+    {% endif %}
+  </nav>
+</header>
+
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  © {{ 2025 }} Lettrix ·
+  <a href="/privacy">Privacy</a> ·
+  <a href="/terms">Terms</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title or "Lettrix" }}</title>
+    <meta name="description" content="{{ page_description or '' }}">
+    <meta property="og:image" content="{{ og_image or '' }}">
+    <link rel="canonical" href="{{ canonical_url or '' }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

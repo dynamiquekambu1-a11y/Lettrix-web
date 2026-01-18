@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terms of Service – Lettrix</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <style>
+    /* LEGAL CONTENT POUR TOUS LES TEXTES */
+    .legal-container {
+      padding: 40px;
+    }
+
+    .legal-container h1 {
+      color: #2563eb;        /* bleu principal */
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .legal-container h2 {
+      color: #1d4ed8;        /* bleu secondaire */
+      font-size: 22px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .legal-container p,
+    .legal-container li {
+      color: #0f172a;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .legal-container ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .legal-container a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .legal-container a:hover {
+      text-decoration: underline;
+    }
+
+    .updated {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+   <!-- LOGO -->
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo Lettrix" class="logo-img">
+      <div class="logo-text">LETTRIX</div>
+    </div>
+
+    <nav class="menu-list">
+      <a href="/open/job_application">📄 Certificate Generator </a>
+      <a href="/open/project_internship">🎓 Resignation Letter</a>
+      <a href="/open/leave_request">📝 Leave Request</a>
+      <a href="/open/project2">📁 Internship Application Letter</a>
+      <a href="/open/projects">📦 Job Application Letter</a>
+    </nav>
+
+    <div class="login-box">
+      <a href="/login">🔐 Login</a>
+    </div>
+
+    <div class="title-bar">
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/terms" style="color:white;">Terms</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </aside>
+
+  <!-- CONTENU -->
+  <main class="content">
+    <div class="legal-container">
+
+      <h1>Terms of Service</h1>
+
+      <p>
+        Welcome to <strong>Lettrix</strong>. By accessing or using this application, you agree to be bound by the
+        following Terms of Service. If you do not agree, please do not use the app.
+      </p>
+
+      <h2>1. Use of the Service</h2>
+      <p>
+        Lettrix provides tools for generating letters and documents for personal
+        and professional use. You agree to use the service only for lawful purposes.
+      </p>
+
+      <h2>2. User Accounts</h2>
+      <p>
+        Some features may require you to log in. You are responsible for any
+        activity that occurs under your session.
+      </p>
+
+      <h2>3. Usage Limits</h2>
+      <p>
+        Lettrix may limit the number of document exports per user to ensure fair use
+        and system stability.
+      </p>
+
+      <h2>4. Intellectual Property</h2>
+      <p>
+        All content, branding, and software related to Lettrix remain the property
+        of Lettrix. You may not copy, resell, or redistribute the service.
+      </p>
+
+      <h2>5. Disclaimer</h2>
+      <p>
+        The service is provided “as is” without warranties of any kind. Lettrix does
+        not guarantee that generated documents will meet legal or professional
+        requirements in all jurisdictions.
+      </p>
+
+      <h2>6. Termination</h2>
+      <p>
+        We reserve the right to suspend or terminate access to the service at any
+        time if these terms are violated.
+      </p>
+
+      <h2>7. Changes to Terms</h2>
+      <p>
+        These terms may be updated at any time. Continued use of the service
+        constitutes acceptance of the revised terms.
+      </p>
+
+      <p class="updated">
+        Last updated: December 2025
+      </p>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

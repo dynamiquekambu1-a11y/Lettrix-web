@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact – Lettrix</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <style>
+    .contact-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .contact-container h1 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    .contact-container p {
+      color: #475569;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #334155;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    .flash {
+      background: #ecfeff;
+      color: #0f172a;
+      border: 1px solid #67e8f9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+   <!-- LOGO -->
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo Lettrix" class="logo-img">
+      <div class="logo-text">LETTRIX</div>
+    </div>
+
+    <nav class="menu-list">
+      <a href="/open/job_application">📄Certificate Generator</a>
+      <a href="/open/project_internship">🎓Resignation Letter</a>
+      <a href="/open/leave_request">📝 Leave Request</a>
+      <a href="/open/project2">📁 Internship Letter</a>
+      <a href="/open/projects">📦 Job Application</a>
+    </nav>
+
+    <div class="login-box">
+      <a href="/login">🔐 Login</a>
+    </div>
+
+    <div class="title-bar">
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="legal-container">
+
+      <h1>Contact Us</h1>
+      <p>
+        Have a question, suggestion, or issue?
+        Fill out the form below and we’ll get back to you.
+      </p>
+
+      <!-- FLASH MESSAGE -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash">{{ messages[0] }}</div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- FORM -->
+      <form method="post">
+
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="message" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+
+      </form>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

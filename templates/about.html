@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us – Lettrix</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <style>
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .about-container h1 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    .about-container h2 {
+      margin-top: 32px;
+      font-size: 20px;
+    }
+
+    .about-container p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #334155;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .value-card {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .value-card h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .muted {
+      color: #64748b;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+   <!-- LOGO -->
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/image.png') }}" alt="Logo Lettrix" class="logo-img">
+      <div class="logo-text">LETTRIX</div>
+    </div>
+
+
+    <nav class="menu-list">
+      <a href="/open/job_application">📄 Certificate Generator</a>
+      <a href="/open/project_internship">🎓 Resignation Letter</a>
+      <a href="/open/leave_request">📝 Leave Request</a>
+      <a href="/open/project2">📁 Internship Letter</a>
+      <a href="/open/projects">📦 Job Application Letter</a>
+    </nav>
+
+    <div class="login-box">
+      <a href="/login">🔐 Login</a>
+    </div>
+
+    <div class="title-bar">
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/terms">Terms</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <div class="legal-container">
+
+      <h1>About Lettrix</h1>
+
+      <p>
+        <strong>Lettrix</strong> was created with a simple idea:
+        make professional letter writing accessible, fast, and reliable
+        for everyone — without complexity.
+      </p>
+
+      <p>
+        Many people struggle to write formal letters for jobs, internships,
+        leave requests, or projects. Lettrix solves this problem by providing
+        ready-to-use tools that generate clear, structured documents in minutes.
+      </p>
+
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to simplify professional communication by giving users
+        practical tools that save time, reduce stress, and improve clarity.
+      </p>
+
+      <h2>What We Do</h2>
+      <p>
+        Lettrix offers multiple mini-applications, each dedicated to a specific
+        type of document. This modular approach allows users to focus only on
+        what they need, without unnecessary features.
+      </p>
+
+      <h2>Our Values</h2>
+
+      <div class="values">
+        <div class="value-card">
+          <h3>⚡ Simplicity</h3>
+          <p>
+            Clean interfaces and clear workflows. No learning curve.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>🎯 Efficiency</h3>
+          <p>
+            Generate documents quickly without sacrificing quality.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>🔒 Trust</h3>
+          <p>
+            Your data stays private. We focus on responsible usage.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>🚀 Growth</h3>
+          <p>
+            Lettrix evolves continuously based on real user needs.
+          </p>
+        </div>
+      </div>
+
+      <p class="muted">
+        Lettrix is an evolving project, built with care to support individuals,
+        students, and professionals worldwide.
+      </p>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>
